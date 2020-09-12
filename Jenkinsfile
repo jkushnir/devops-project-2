@@ -7,5 +7,12 @@ pipeline {
       }
     }
 
+    stage('python-requirements') {
+      steps {
+        sh '''ls
+python3 -m pip install -r requirements.txt'''
+      }
+    }
+
   }
 }
