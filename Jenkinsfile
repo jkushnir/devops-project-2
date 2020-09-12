@@ -9,8 +9,19 @@ pipeline {
 
     stage('python-requirements') {
       steps {
-        sh '''ls
-python3 -m pip install -r requirements.txt'''
+        sh 'python3 -m pip install -r requirements.txt'
+      }
+    }
+
+    stage('docker-compose-up') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+
+    stage('run-test') {
+      steps {
+        sh 'tests/e2e.py'
       }
     }
 
