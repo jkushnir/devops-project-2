@@ -17,6 +17,8 @@ ENV DISPLAY=:99
 COPY *.py /app/
 COPY tests/*.py /app/tests/
 COPY requirements.txt /app/
+COPY Scores.txt /app/
+EXPOSE 8777
 WORKDIR /app
 RUN python3.7 -m pip install -r requirements.txt
 CMD python3.7 -u MainScores.py

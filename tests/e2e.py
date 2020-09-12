@@ -24,7 +24,6 @@ def test_scores_service(app_url):
     try:
         driver.get(app_url)
         score = driver.find_element_by_xpath(score_element).text
-        print(score)
         if int(score) >= 0 and int(score) <= 1000:
             is_score_valid = True
     except Exception as e:
