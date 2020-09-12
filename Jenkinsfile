@@ -21,8 +21,17 @@ pipeline {
 
     stage('run-test') {
       steps {
-        sh '''tests/e2e.py
-echo "error code is $?"'''
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE', message: 'Failed to retrieve scrore') {
+          sh '''tests/e2e.py
+echo "error code is $?'''
+        }
+
+      }
+    }
+
+    stage('docker-compose-down') {
+      steps {
+        sh 'docker-compose down'
       }
     }
 
