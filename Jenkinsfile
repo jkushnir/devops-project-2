@@ -23,7 +23,7 @@ pipeline {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE', message: 'Failed to retrieve scrore') {
           sh '''tests/e2e.py
-echo "error code is $?'''
+echo "error code is $?"'''
         }
 
       }
