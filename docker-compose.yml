@@ -4,4 +4,4 @@ services:
   world_of_games:
     build: .
     ports:
-      - 8778:8777
+      - 8777:8777
