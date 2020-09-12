@@ -21,7 +21,8 @@ pipeline {
 
     stage('run-test') {
       steps {
-        sh 'tests/e2e.py'
+        sh '''tests/e2e.py
+echo "error code is $?"'''
       }
     }
 
