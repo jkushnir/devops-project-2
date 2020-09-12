@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 import sys
 
 
@@ -12,12 +14,12 @@ def test_scores_service(app_url):
     score_element = '//*[@id="score"]'
 
     options = webdriver.ChromeOptions()
-    # below options are for running the webdriver in a docker container
+    # below options are for running the webdriver headless and in a container (if needed)
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-gpu')
     options.add_argument("--headless")
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(10)
 
     # using "try" to get to return regardless of the exception type
